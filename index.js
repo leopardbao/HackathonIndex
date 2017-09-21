@@ -3,20 +3,21 @@ const app = express();
 const bodyParser = require("body-parser");
 const config = require("./config");
 
-app.use(express.static('public'));
+app.use(express.static("public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.set('view engine', 'ejs');
+app.set("view engine", "ejs");
 
 let infoArr = [];
 
-app.get('/', function(req, res, next){
-      res.render('index', {info: infoArr, time: config.time}); 
+app.get("/", function(req, res, next){
+      res.render("index", {team: infoArr, time: config.time, title: config.title, qa: config.qa}); 
 })
 
-app.post('/team',function(req, res, next){
+app.post("/team",function(req, res, next){
 	infoArr.push(req.body);
-	res.redirect('/');
+	console.log(JSON.stringify(req.body));
+	res.redirect("/");
 })
 
 app.listen(3000, function(){

@@ -1,51 +1,172 @@
 <!DOCTYPE html>
 <html>
+
+<head>
+    <style>
+        .center {
+            text-align: center
+        }
+
+        .whole-page {
+            height: 90vh
+        }
+
+        .section {
+            min-height: 100vh;
+        }
+
+        .row {
+            margin-top:10vh;
+             margin-bottom: 10vh
+        }
+
+        .section-small {
+            min-height: 50vh;
+        }
+
+
+    </style>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+
 <body>
-<p id="timer"></p>
-<%= JSON.stringify(info)%>
+    <div class="section" style="background-color: rgb(196, 196, 223);background-image:url('/image/background.png'); background-size: 80% 130%; background-position: center center;">
+        <div class="container">
+                <div class="center">
+                    <h1 style="margin-top:30vh; font-size:60px; color:#FFFFFF;">
+                        <b><%- title %></b>
+                    </h1>
+                    <h1 id="timer" style="color:#FFFFFF; font-size:23px; margin-bottom:5vh"></h1>
+                    <a href="#Rules" class="btn btn-danger">Learn More</a>
+            </div>
+        </div>
+    </div>
 
-<script>
-var countDownDate = new Date('<%= time %>').getTime();
 
- var now = new Date().getTime();
- var distance = countDownDate - now;
-    
- var days = Math.floor(distance / (1000 * 60 * 60 * 24));
- var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
- var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
- var seconds = Math.floor((distance % (1000 * 60)) / 1000);
- document.getElementById("timer").innerHTML = days + "d " + hours + "h "
-    + minutes + "m " + seconds + "s ";
 
-var x = setInterval(function() {
-    var now = new Date().getTime();
-    var distance = countDownDate - now;
-    
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
-    document.getElementById("timer").innerHTML = days + "d " + hours + "h "
-    + minutes + "m " + seconds + "s ";
-    
-    // If the count down is over, write some text 
-    if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("timer").innerHTML = "COMPETITITON BEGIN";
-    }
-}, 1000);
-</script>
+    <div class="section-small" style="background-color: #3D6B86">
+        <div id = "Rules"></div>
+        <div class="container">
+            <div class="row" style="margin-top:10vh; margin-bottom: 10vh">
+                <h2>Rules</h2>
+                <%- include("../rules.html"); %>
+            </div>
+        </div>
+    </div>
 
-<form action="/team" method="post">
-  Team Name:<br> 
-  <input type="text" name="teamName"><br>
-  Contact Name:<br>
-  <input type="text" name="capName"><br>
-  Contact E-mail:<br>
-  <input type="text" name="capEMail"><br>
-  <button type="submit">Submit</button>
-</form>
+
+
+
+
+<div class="section-small" style="background-color: #FFCA1C">
+        <div class="container">
+        <div class="row">
+                <h2>FAQs</h2>
+                <% for(var i=0; i<qa.length; i++) {%>
+                    <div class="col-sm-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Q:
+                                    <%= qa[i].question%>
+                                </h3>
+                            </div>
+                            <div class="panel-body">
+                                <%= qa[i].answer%>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+            </div>
+            </div>
+</div>
+
+<div class="section-small" style="background-color: #2F3235">
+        <div class="container">
+    <div class="row">
+        <form class="form-horizontal" action="/team" method="post">
+            <fieldset>
+                <legend>Register</legend>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-lg-2 control-label">Captain's Email</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" name="email" placeholder="Email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword" class="col-lg-2 control-label">Team Name</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" name="teamName" placeholder="">
+                    
+                    </div>
+                </div>
+                <div style = "float:right">
+                        <input type="submit" class="btn btn-primary">
+                </div>
+                    
+                </div>
+            </div>
+            </div>
+    </div>
+    </fieldset>
+    </form>
+    </div>
+    </div>
+
+
+
+    <script>
+        var countDownDate = new Date('<%= time %>').getTime();
+
+        var now = new Date().getTime();
+        var distance = countDownDate - now;
+
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        document.getElementById("timer").innerHTML = days + "D " + hours + "H "
+            + minutes + "M " + seconds + "S";
+
+        var x = setInterval(function () {
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
+
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("timer").innerHTML = days + "D " + hours + "H "
+                + minutes + "M " + seconds + "S ";
+
+            // If the count down is over, write some text 
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("timer").innerHTML = "COMPETITITON BEGIN";
+            }
+        }, 1000);
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("a").on('click', function (event) {
+                if (this.hash !== "") {
+                    event.preventDefault();
+                    var hash = this.hash;
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 800, function () {
+
+                        window.location.hash = hash;
+                    });
+                } // End if
+            });
+        });
+    </script>
+
+
 
 </body>
+
 </html>
