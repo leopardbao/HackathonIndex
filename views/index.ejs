@@ -24,6 +24,130 @@
             min-height: 50vh;
         }
 
+        .timeline {
+            list-style: none;
+            padding: 20px 0 20px;
+            position: relative;
+        }
+
+        .timeline:before {
+            top: 0;
+            bottom: 0;
+            position: absolute;
+            content: " ";
+            width: 3px;
+            background-color: #eeeeee;
+            left: 50%;
+            margin-left: -1.5px;
+        }
+
+        .timeline>li {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .timeline>li:before,
+        .timeline>li:after {
+            content: " ";
+            display: table;
+        }
+
+        .timeline>li:after {
+            clear: both;
+        }
+
+        .timeline>li:before,
+        .timeline>li:after {
+            content: " ";
+            display: table;
+        }
+
+        .timeline>li:after {
+            clear: both;
+        }
+
+        .timeline>li>.timeline-panel {
+            width: 46%;
+            float: left;
+            border: 1px solid #d4d4d4;
+            border-radius: 2px;
+            padding: 20px;
+            position: relative;
+        
+        }
+
+        .timeline>li>.timeline-panel:before {
+            position: absolute;
+            top: 12px;
+            right: -15px;
+            display: inline-block;
+            border-top: 15px solid transparent;
+            border-left: 15px solid #ccc;
+            border-right: 0 solid #ccc;
+            border-bottom: 15px solid transparent;
+            content: " ";
+        }
+
+        .timeline>li>.timeline-panel:after {
+            position: absolute;
+            top: 13px;
+            right: -14px;
+            display: inline-block;
+            border-top: 14px solid transparent;
+            border-left: 14px solid #fff;
+            border-right: 0 solid #fff;
+            border-bottom: 14px solid transparent;
+            content: " ";
+        }
+
+        .timeline>li>.timeline-badge {
+            color: #fff;
+            width: 24px;
+            height: 24px;
+            line-height: 24px;
+            font-size: 1.4em;
+            text-align: center;
+            position: absolute;
+            top: 16px;
+            left: 50%;
+            margin-left: -12px;
+            background-color: #F77327;
+            z-index: 100;
+            border-top-right-radius: 50%;
+            border-top-left-radius: 50%;
+            border-bottom-right-radius: 50%;
+            border-bottom-left-radius: 50%;
+        }
+
+        .timeline>li.timeline-inverted>.timeline-panel {
+            float: right;
+        }
+
+        .timeline>li.timeline-inverted>.timeline-panel:before {
+            border-left-width: 0;
+            border-right-width: 15px;
+            left: -15px;
+            right: auto;
+        }
+
+        .timeline>li.timeline-inverted>.timeline-panel:after {
+            border-left-width: 0;
+            border-right-width: 14px;
+            left: -14px;
+            right: auto;
+        }
+
+
+        .timeline-title {
+            margin-top: 0;
+            color: darkgray;
+        }
+
+        .timeline-body>p,
+        .timeline-body>ul {
+            margin-bottom: 0;
+            color: gray
+        }
 
     </style>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -32,13 +156,13 @@
 </head>
 
 <body>
-    <div class="section" style="background-color: rgb(196, 196, 223);background-image:url('/image/background.png'); background-size: 80% 130%; background-position: center center;">
+    <div class="section" style="background-color: rgb(196, 196, 223);background-image:url('/image/background.png'); background-size: 90% 120%; background-position: center center;">
         <div class="container">
                 <div class="center">
                     <h1 style="margin-top:30vh; font-size:60px; color:#FFFFFF;">
                         <b><%- title %></b>
                     </h1>
-                    <h1 id="timer" style="color:#FFFFFF; font-size:23px; margin-bottom:5vh"></h1>
+                   Starts in<h1 id="timer" style="color:#FFFFFF; font-size:23px; margin-bottom:5vh"></h1>
                     <a href="#Rules" class="btn btn-danger">Learn More</a>
             </div>
         </div>
@@ -46,7 +170,7 @@
 
 
 
-    <div class="section-small" style="background-color: #3D6B86">
+    <div class="section" style="background-color: #6C8999">
         <div id = "Rules"></div>
         <div class="container">
             <div class="row" style="margin-top:10vh; margin-bottom: 10vh">
@@ -59,8 +183,67 @@
 
 
 
+    <div class="section-small" style="background-color: #FFFFFF">
+            <div class="container">
+                    <div class="row">
+                        <h2 id="Schedule" style="color: gray">Schedule</h2>
+                    <ul class="timeline">
+                        <li>
+                            <div class="timeline-badge"></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="timeline-title">10:00AM</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis
+                                        porris, paradis. Paisis, filhis, espiritis santis. </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-badge"></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="timeline-title">12:00PM</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis
+                                        porris, paradis. </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="timeline-badge"></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="timeline-title">4:30PM</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis
+                                        porris, paradis.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                                <div class="timeline-badge"></div>
+                                <div class="timeline-panel">
+                                    <div class="timeline-heading">
+                                        <h4 class="timeline-title">6:00PM</h4>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis
+                                            porris, paradis. </p>
+                                    </div>
+                                </div>
+                            </li>
+                    </ul>
+                </div>
+                </div>
+    </div>
 
-<div class="section-small" style="background-color: #FFCA1C">
+
+
+<div class="section-small" style="background-color: #FC6620">
         <div class="container">
         <div class="row">
                 <h2>FAQs</h2>
